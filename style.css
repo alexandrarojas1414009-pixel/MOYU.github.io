@@ -1,0 +1,58 @@
+:root{--yellow:#f5a800;--pink:#f1dede;--ink:#222;--muted:#666;--line:#d9d9d9;--bg:#faf7f5}
+*{box-sizing:border-box}
+body{margin:0;font-family:Georgia,"Times New Roman",serif;color:var(--ink);background:var(--bg);line-height:1.6}
+header.top{background:#fff;border-bottom:4px solid var(--yellow);position:sticky;top:0;z-index:10}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:10px 20px}
+.brand{font-family:Arial,Helvetica,sans-serif;font-weight:800;font-size:1.1rem}
+.brand span{color:var(--yellow)}
+nav{font-family:Arial,Helvetica,sans-serif;font-size:.85rem;display:flex;gap:4px;flex-wrap:wrap}
+nav a{color:var(--ink);text-decoration:none;padding:4px 8px;border-radius:6px}
+nav a:hover{background:var(--yellow);color:#fff}
+nav a.active{background:var(--yellow);color:#fff;font-weight:bold}
+main{max-width:900px;margin:0 auto;padding:20px}
+section.page{background:#fff;border:1px solid var(--line);border-radius:10px;padding:28px;margin:24px 0;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+h1,h2,h3{font-family:Arial,Helvetica,sans-serif;line-height:1.25}
+h2{border-left:6px solid var(--yellow);padding-left:12px;margin-top:0}
+
+.cover{background:var(--pink);text-align:center;padding:40px 20px;border-radius:10px}
+.cover .logo{display:inline-block;background:#fff;padding:10px 24px;border-bottom:4px solid var(--yellow);font-family:Arial,sans-serif;font-weight:800;font-size:1.3rem;margin-bottom:24px}
+.cover h1{font-size:1.25rem;margin:8px 0 2px}
+.cover .label{font-weight:bold;margin:22px 0 2px;font-family:Arial,sans-serif;font-size:.95rem}
+.cover p{margin:0}
+
+.placeholder{border:2px dashed #c9a24a;background:#fffbea;padding:14px;border-radius:8px;color:#7a5d00;font-family:Arial,sans-serif;font-size:.95rem}
+
+.form-head{font-family:Arial,sans-serif;text-align:center;margin-bottom:14px}
+.form-head strong{display:block}
+.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px 18px;font-family:Arial,sans-serif;font-size:.9rem;margin-bottom:14px}
+.fields div{border-bottom:1px solid #555;padding-bottom:2px}
+table{width:100%;border-collapse:collapse;font-family:Arial,sans-serif;font-size:.92rem}
+th,td{border:1px solid #444;padding:10px;vertical-align:top;text-align:left}
+th{background:#f3f3f3}
+td ul{margin:0;padding-left:18px}
+.noclass{margin-top:12px;padding:10px 14px;background:#eef6ff;border-left:4px solid #3b82c4;font-family:Arial,sans-serif;font-size:.92rem}
+
+.evidence h3{font-size:1rem;margin:20px 0 8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+figure{margin:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#fff}
+figure img{width:100%;display:block;cursor:zoom-in;background:#eee;min-height:120px;object-fit:contain}
+figcaption{font-family:Arial,sans-serif;font-size:.78rem;color:var(--muted);padding:8px 10px;border-top:1px solid var(--line)}
+
+.checklist td:first-child{width:22%}
+.checklist td:last-child{width:14%;text-align:center}
+
+.pager{display:flex;justify-content:space-between;gap:10px;font-family:Arial,sans-serif;margin:10px 0 30px}
+.pager a{background:var(--yellow);color:#fff;text-decoration:none;padding:10px 18px;border-radius:8px;font-weight:bold}
+.pager a:hover{background:#d98f00}
+.pager span{flex:1}
+
+.weeklist{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px;font-family:Arial,sans-serif}
+.weeklist a{display:block;text-align:center;padding:14px 8px;border:2px solid var(--yellow);border-radius:8px;color:var(--ink);text-decoration:none;font-weight:bold}
+.weeklist a:hover{background:var(--yellow);color:#fff}
+
+footer{text-align:center;font-family:Arial,sans-serif;color:var(--muted);font-size:.8rem;padding:10px 0 50px}
+
+#lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:50;align-items:center;justify-content:center;padding:16px;cursor:zoom-out}
+#lb img{max-width:100%;max-height:100%}
+
+@media print{header.top,#lb,.pager{display:none}body{background:#fff}section.page{box-shadow:none;border:none;page-break-after:always}}

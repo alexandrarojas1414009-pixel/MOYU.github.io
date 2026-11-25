@@ -1,451 +1,69 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PORTAFOLIO // CIBERSEGURIDAD</title>
-  <!-- Fuentes Google: Space Grotesk (Táctica) y JetBrains Mono (Código) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
-  
-  <style>
-    :root {
-      --bg-main: #0B0D11;
-      --bg-card: #13171F;
-      --bg-card-hover: #191E28;
-      --border-color: #222834;
-      --text-main: #E5E9F0;
-      --text-muted: #8892B0;
-      --accent-teal: #00E5A3; /* Ojos / Precisión táctica */
-      --accent-cyan: #00ADB5;
-      --accent-dark: #231B2D; /* Tono sutil maldición */
-      --steel: #A0AAB2;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      background-color: var(--bg-main);
-      color: var(--text-main);
-      font-family: 'Space Grotesk', sans-serif;
-      line-height: 1.6;
-      overflow-x: hidden;
-      background-image: radial-gradient(rgba(0, 229, 163, 0.04) 1px, transparent 1px);
-      background-size: 32px 32px;
-    }
-
-    /* Contenedor central */
-    .container {
-      max-width: 1050px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* Navbar */
-    nav {
-      border-bottom: 1px solid var(--border-color);
-      background: rgba(11, 13, 17, 0.9);
-      backdrop-filter: blur(10px);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      padding: 16px 0;
-    }
-    .nav-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .logo {
-      font-family: 'JetBrains Mono', monospace;
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: var(--accent-teal);
-      letter-spacing: 1px;
-    }
-    .nav-links {
-      display: flex;
-      gap: 20px;
-    }
-    .nav-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: color 0.3s ease;
-    }
-    .nav-links a:hover {
-      color: var(--accent-teal);
-    }
-
-    /* Hero Section */
-    .hero {
-      padding: 90px 0 60px;
-    }
-    .badge-status {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      padding: 6px 14px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8rem;
-      color: var(--accent-teal);
-      margin-bottom: 24px;
-      border-radius: 2px;
-    }
-    .status-dot {
-      width: 8px;
-      height: 8px;
-      background: var(--accent-teal);
-      border-radius: 50%;
-      box-shadow: 0 0 8px var(--accent-teal);
-    }
-    .hero h1 {
-      font-size: clamp(2.3rem, 5vw, 3.8rem);
-      font-weight: 700;
-      line-height: 1.15;
-      margin-bottom: 20px;
-      color: #FFFFFF;
-      letter-spacing: -0.5px;
-    }
-    .hero h1 span {
-      color: var(--accent-teal);
-      border-bottom: 3px solid var(--accent-teal);
-    }
-    .hero p {
-      font-size: 1.15rem;
-      color: var(--text-muted);
-      max-width: 650px;
-      margin-bottom: 32px;
-    }
-    .btn-group {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-    .btn {
-      padding: 12px 24px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      text-decoration: none;
-      border-radius: 2px;
-      transition: all 0.2s ease;
-      display: inline-flex;
-      align-items: center;
-      font-family: 'JetBrains Mono', monospace;
-    }
-    .btn-primary {
-      background: var(--accent-teal);
-      color: #000;
-      border: 1px solid var(--accent-teal);
-      box-shadow: 0 0 15px rgba(0, 229, 163, 0.3);
-    }
-    .btn-primary:hover {
-      background: #00C78E;
-      box-shadow: 0 0 25px rgba(0, 229, 163, 0.5);
-    }
-    .btn-secondary {
-      background: transparent;
-      color: var(--text-main);
-      border: 1px solid var(--border-color);
-    }
-    .btn-secondary:hover {
-      border-color: var(--steel);
-      background: var(--bg-card);
-    }
-
-    /* Sección Genérica */
-    section {
-      padding: 60px 0;
-      border-top: 1px solid var(--border-color);
-    }
-    .section-title {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.85rem;
-      color: var(--accent-teal);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-      display: block;
-    }
-    .section-heading {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 30px;
-    }
-
-    /* Grid de Proyectos / Labs */
-    .grid-projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-      gap: 24px;
-    }
-    .card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-left: 4px solid var(--accent-teal);
-      padding: 24px;
-      border-radius: 2px;
-      transition: all 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .card:hover {
-      background: var(--bg-card-hover);
-      transform: translateY(-4px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-      border-color: var(--accent-teal);
-    }
-    .card-tag {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      color: var(--accent-teal);
-      margin-bottom: 10px;
-    }
-    .card h3 {
-      font-size: 1.25rem;
-      margin-bottom: 12px;
-      color: #FFF;
-    }
-    .card p {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      margin-bottom: 20px;
-      flex-grow: 1;
-    }
-    .tech-stack {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-    .tech-pill {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 4px 10px;
-      font-size: 0.75rem;
-      font-family: 'JetBrains Mono', monospace;
-      color: var(--steel);
-      border-radius: 2px;
-    }
-
-    /* Skills Box */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
-    .skill-block {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      padding: 20px;
-      border-radius: 2px;
-    }
-    .skill-block h4 {
-      font-size: 1.05rem;
-      color: var(--accent-teal);
-      margin-bottom: 12px;
-      font-family: 'JetBrains Mono', monospace;
-    }
-    .skill-list {
-      list-style: none;
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-    .skill-list li {
-      margin-bottom: 6px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .skill-list li::before {
-      content: "▹";
-      color: var(--accent-teal);
-    }
-
-    /* Footer */
-    footer {
-      border-top: 1px solid var(--border-color);
-      padding: 40px 0;
-      text-align: center;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-    footer a {
-      color: var(--accent-teal);
-      text-decoration: none;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>English Portfolio – Cover</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
+<header class="top"><div class="wrap">
+  <div class="brand"><span>ITSE</span> · English Portfolio</div>
+  <nav id="nav"></nav>
+</div></header>
 
-  <!-- Barra de navegación -->
-  <nav>
-    <div class="container nav-content">
-      <div class="logo">&lt;TOJI_OPS // SEC&gt;</div>
-      <div class="nav-links">
-        <a href="#about">Sobre Mí</a>
-        <a href="#labs">Laboratorios</a>
-        <a href="#skills">Habilidades</a>
-        <a href="#contact">Contacto</a>
-      </div>
-    </div>
-  </nav>
+<main>
+  <!-- 1. PRESENTATION PAGE -->
+  <section class="page" id="presentation">
+    <div class="cover">
+      <div class="logo">ITSE · INSTITUTO TÉCNICO SUPERIOR ESPECIALIZADO</div>
+      <h1>INSTITUTO TÉCNICO SUPERIOR ESPECIALIZADO</h1>
+      <p>SCHOOL OF BUSINESS</p>
 
-  <!-- Hero Section -->
-  <header class="hero">
-    <div class="container">
-      <div class="badge-status">
-        <span class="status-dot"></span>
-        ESTADO: ESTUDIANTE DE CIBERSEGURIDAD // EN BÚSQUEDA DE PRÁCTICAS
-      </div>
-      <h1>Cero ruido.<br><span>Defensa y precisión táctica.</span></h1>
-      <p>
-        Estudiante enfocado en operaciones <strong>Blue Team</strong>, detección de amenazas, análisis de vulnerabilidades y seguridad defensiva. Aplicando disciplina rigurosa para proteger infraestructuras críticas.
-      </p>
-      <div class="btn-group">
-        <a href="#labs" class="btn btn-primary">VER LABORATORIOS</a>
-        <a href="#contact" class="btn btn-secondary">CONTACTO</a>
-      </div>
-    </div>
-  </header>
+      <h1 style="margin-top:36px">PORTFOLIO OF EVIDENCE</h1>
+      <p>I QUARTER</p>
 
-  <!-- Sección Sobre Mí -->
-  <section id="about">
-    <div class="container">
-      <span class="section-title">// 01. FILOSOFÍA Y PERFIL</span>
-      <h2 class="section-heading">Fundamentos sólidos y ejecución limpia</h2>
-      <p style="color: var(--text-muted); font-size: 1.05rem; max-width: 800px; margin-bottom: 24px;">
-        Así como en la <em>Restricción Celestial</em> no se depende de trucos mágicos sino de la comprensión física pura y disciplina, la ciberseguridad requiere dominar las bases: arquitectura de redes, sistemas operativos, protocolos y análisis forense. Mi enfoque se centra en documentar cada paso y entender exactamente cómo operan los atacantes para neutralizarlos con precisión.
-      </p>
+      <p class="label">Presented by the student:</p>
+      <p>Cary De Gracia</p>
+      <p class="label">ID:</p>
+      <p>8-993-859</p>
+      <p class="label">Group:</p>
+      <p>N-EB-4-1</p>
+      <p class="label">Subject:</p>
+      <p>Business English</p>
+      <p class="label">Teacher:</p>
+      <p>[Teacher's name]</p>
+
+      <p style="margin-top:50px">Panama, December 2026.</p>
     </div>
   </section>
 
-  <!-- Sección Laboratorios / Proyectos -->
-  <section id="labs">
-    <div class="container">
-      <span class="section-title">// 02. PROYECTOS Y ENTORNOS PRÁCTICOS</span>
-      <h2 class="section-heading">Laboratorios Técnicos</h2>
-      
-      <div class="grid-projects">
-        
-        <!-- Lab 1 -->
-        <div class="card">
-          <div>
-            <div class="card-tag">SIEM // DETECCIÓN</div>
-            <h3>Implementación de SIEM Wazuh</h3>
-            <p>Despliegue de un servidor central Wazuh con agentes en Windows/Linux para monitorización de telemetría e identificación de ataques de fuerza bruta.</p>
-          </div>
-          <div class="tech-stack">
-            <span class="tech-pill">Wazuh</span>
-            <span class="tech-pill">Sysmon</span>
-            <span class="tech-pill">Linux</span>
-          </div>
-        </div>
+  <!-- 2. INTRODUCTION (write it yourself, no AI) -->
+  <section class="page" id="introduction">
+    <h2>Introduction</h2>
+    <div class="placeholder">Paragraph 1 – About me: write your name, age, hobbies and a nickname.</div>
+    <br>
+    <div class="placeholder">Paragraph 2 – About this portfolio: briefly explain what this portfolio contains.</div>
+  </section>
 
-        <!-- Lab 2 -->
-        <div class="card">
-          <div>
-            <div class="card-tag">REDES // ANÁLISIS DE TRÁFICO</div>
-            <h3>Análisis Forense con Wireshark</h3>
-            <p>Inspección profunda de archivos PCAP para identificar anomalías en protocolos HTTP/DNS y exfiltración de datos no autorizada.</p>
-          </div>
-          <div class="tech-stack">
-            <span class="tech-pill">Wireshark</span>
-            <span class="tech-pill">TCP/IP</span>
-            <span class="tech-pill">DNS</span>
-          </div>
-        </div>
-
-        <!-- Lab 3 -->
-        <div class="card">
-          <div>
-            <div class="card-tag">INFRAESTRUCTURA // HARDENING</div>
-            <h3>Active Directory Home Lab</h3>
-            <p>Construcción de un dominio local vulnerable con Windows Server 2022 para simular vectores de ataque y aplicar directivas de grupo (GPO) defensivas.</p>
-          </div>
-          <div class="tech-stack">
-            <span class="tech-pill">Active Directory</span>
-            <span class="tech-pill">GPO</span>
-            <span class="tech-pill">VirtualBox</span>
-          </div>
-        </div>
-
-      </div>
+  <!-- 3. CONTENT INDEX -->
+  <section class="page" id="contents">
+    <h2>Contents</h2>
+    <div class="weeklist">
+      <a href="week1.html">Week 1</a><a href="week2.html">Week 2</a><a href="week3.html">Week 3</a>
+      <a href="week4.html">Week 4</a><a href="week5.html">Week 5</a><a href="week6.html">Week 6</a>
+      <a href="week7.html">Week 7</a><a href="week8.html">Week 8</a><a href="week9.html">Week 9</a>
+      <a href="week10.html">Week 10</a><a href="week11.html">Week 11</a><a href="week12.html">Week 12</a>
+      <a href="conclusion.html">Conclusion</a>
     </div>
   </section>
 
-  <!-- Sección Habilidades -->
-  <section id="skills">
-    <div class="container">
-      <span class="section-title">// 03. ARSENAL TÉCNICO</span>
-      <h2 class="section-heading">Herramientas y Tecnologías</h2>
+  <div class="pager" id="pager"></div>
+</main>
 
-      <div class="skills-grid">
-        <div class="skill-block">
-          <h4>Sistemas y Redes</h4>
-          <ul class="skill-list">
-            <li>Linux (Kali, Ubuntu, Debian)</li>
-            <li>Windows Server / Active Directory</li>
-            <li>Protocolos TCP/IP, DNS, DHCP</li>
-            <li>Enrutamiento y Firewalls</li>
-          </ul>
-        </div>
-
-        <div class="skill-block">
-          <h4>Herramientas de Análisis</h4>
-          <ul class="skill-list">
-            <li>Wireshark / TShark</li>
-            <li>Nmap Network Scanner</li>
-            <li>Burp Suite Community</li>
-            <li>Wazuh / Splunk</li>
-          </ul>
-        </div>
-
-        <div class="skill-block">
-          <h4>Scripting & Automatización</h4>
-          <ul class="skill-list">
-            <li>Python (Automatización & Sockets)</li>
-            <li>Bash Scripting</li>
-            <li>PowerShell Básico</li>
-            <li>Git & GitHub</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Sección Contacto -->
-  <section id="contact">
-    <div class="container" style="text-align: center; max-width: 600px;">
-      <span class="section-title">// 04. COMUNICACIÓN</span>
-      <h2 class="section-heading">Inicia Contacto</h2>
-      <p style="color: var(--text-muted); margin-bottom: 30px;">
-        Disponible para prácticas profesionales, proyectos colaborativos o resolución de retos técnicos.
-      </p>
-      <div class="btn-group" style="justify-content: center;">
-        <!-- Cambia tu correo aquí -->
-        <a href="mailto:tu-correo@gmail.com" class="btn btn-primary">ENVIAR CORREO</a>
-        <!-- Cambia tus links aquí -->
-        <a href="https://linkedin.com" target="_blank" class="btn btn-secondary">LINKEDIN</a>
-        <a href="https://github.com" target="_blank" class="btn btn-secondary">GITHUB</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <p>© 2026 // Portafolio de Ciberseguridad // Inspirado en la precisión de Toji Fushiguro</p>
-    </div>
-  </footer>
-
+<footer>Cary De Gracia · Business English · ITSE · I Quarter 2026</footer>
+<div id="lb"><img alt=""></div>
+<script src="data.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
